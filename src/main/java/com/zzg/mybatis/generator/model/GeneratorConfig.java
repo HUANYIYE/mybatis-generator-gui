@@ -66,6 +66,14 @@ public class GeneratorConfig {
 
     private boolean jsr310Support;
 
+    private String servicePackage;
+
+	private String serviceProject;
+
+	private String controllerPackage;
+
+	private String controllerProject;
+
     public boolean isJsr310Support() {
         return jsr310Support;
     }
@@ -284,5 +292,37 @@ public class GeneratorConfig {
 
 	public boolean isUseDAOExtendStyle() {
 		return useDAOExtendStyle;
+	}
+
+	public String getServicePackage() {
+		return servicePackage;
+	}
+
+	public void setServicePackage(String servicePackage) {
+		this.servicePackage = servicePackage;
+	}
+
+	public String getServiceProject() {
+		return serviceProject;
+	}
+
+	public void setServiceProject(String serviceProject) {
+		this.serviceProject = serviceProject;
+	}
+
+	public String getControllerPackage() {
+		return controllerPackage;
+	}
+
+	public void setControllerPackage(String controllerPackage) {
+		this.controllerPackage = controllerPackage;
+	}
+
+	public String getControllerProject() {
+		return controllerProject;
+	}
+
+	public void setControllerProject(String controllerProject) {
+		this.controllerProject = controllerProject;
 	}
 }

@@ -268,6 +268,34 @@
                                     <Insets left="5.0" />
                                  </GridPane.margin>
                               </TextField>
+                                      <Label prefHeight="27.0" prefWidth="99.0" text="Service类包名" GridPane.rowIndex="11" />
+                                      <TextField fx:id="serviceTargetPackage" prefHeight="27.0" prefWidth="248.0" promptText="com.example.service" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                          <HBox.margin>
+                                              <Insets right="5.0" />
+                                          </HBox.margin>
+                                          <GridPane.margin>
+                                              <Insets left="5.0" right="5.0" />
+                                          </GridPane.margin>
+                                      </TextField>
+                                      <Label text="存放目录" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                                      <TextField fx:id="serviceTargetProject" prefHeight="27.0" prefWidth="155.0" promptText="src/main/java" text="src/main/java" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="11">
+                                          <GridPane.margin>
+                                              <Insets left="5.0" />
+                                          </GridPane.margin></TextField>
+                                      <Label prefHeight="27.0" prefWidth="99.0" text="Controller类包名" GridPane.rowIndex="12" />
+                                      <TextField fx:id="controllerTargetPackage" prefHeight="27.0" prefWidth="248.0" promptText="com.example.controller" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <HBox.margin>
+                                              <Insets right="5.0" />
+                                          </HBox.margin>
+                                          <GridPane.margin>
+                                              <Insets left="5.0" right="5.0" />
+                                          </GridPane.margin>
+                                      </TextField>
+                                      <Label text="存放目录" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+                                      <TextField fx:id="controllerTargetProject" prefHeight="27.0" prefWidth="155.0" promptText="src/main/java" text="src/main/java" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="12">
+                                          <GridPane.margin>
+                                              <Insets left="5.0" />
+                                          </GridPane.margin></TextField>
                                   </children>
                               </GridPane>
                      </children>

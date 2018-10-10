@@ -109,6 +109,15 @@ public class MainUIController extends BaseFXController {
 
     @FXML
     private ChoiceBox<String> encodingChoice;
+    @FXML
+    private TextField serviceTargetProject;
+    @FXML
+    private TextField serviceTargetPackage;
+    @FXML
+    private TextField controllerTargetProject;
+    @FXML
+    private TextField controllerTargetPackage;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -352,6 +361,10 @@ public class MainUIController extends BaseFXController {
         generatorConfig.setUseDAOExtendStyle(useDAOExtendStyle.isSelected());
         generatorConfig.setUseSchemaPrefix(useSchemaPrefix.isSelected());
         generatorConfig.setJsr310Support(jsr310Support.isSelected());
+        generatorConfig.setServicePackage(serviceTargetPackage.getText());
+        generatorConfig.setServiceProject(serviceTargetProject.getText());
+        generatorConfig.setControllerPackage(controllerTargetPackage.getText());
+        generatorConfig.setControllerProject(controllerTargetProject.getText());
         return generatorConfig;
     }
 
@@ -366,6 +379,10 @@ public class MainUIController extends BaseFXController {
         mappingTargetProject.setText(generatorConfig.getMappingXMLTargetFolder());
         encodingChoice.setValue(generatorConfig.getEncoding());
         useExample.setSelected(generatorConfig.isUseExample());
+        serviceTargetPackage.setText(generatorConfig.getServicePackage());
+        serviceTargetProject.setText(generatorConfig.getServiceProject());
+        controllerTargetProject.setText(generatorConfig.getControllerProject());
+        controllerTargetPackage.setText(generatorConfig.getControllerPackage());
     }
 
     @FXML
