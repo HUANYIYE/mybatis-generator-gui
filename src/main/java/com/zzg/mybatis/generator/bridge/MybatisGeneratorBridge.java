@@ -55,7 +55,7 @@ public class MybatisGeneratorBridge {
 
     public void generate() throws Exception {
         Configuration configuration = new Configuration();
-        Context context = new Context(ModelType.CONDITIONAL);
+        Context context = new Context(ModelType.FLAT);
         configuration.addContext(context);
 
         context.addProperty("autoDelimitKeywords", "true");
@@ -257,17 +257,8 @@ public class MybatisGeneratorBridge {
                 mappingXMLFile.delete();
             }
         }
-
         myBatisGenerator.generate(progressCallback, contexts, fullyqualifiedTables);
-        if (StringUtils.isNotBlank(generatorConfig.getServicePackage())
-                && StringUtils.isNotBlank(generatorConfig.getControllerPackage())
-                && StringUtils.isNotBlank(generatorConfig.getControllerProject())
-                && StringUtils.isNotBlank(generatorConfig.getServiceProject())) {
-            //生成service与controller
-            CodeGeneratorManager.init(this.generatorConfig);
-            CodeGeneratorManager codeGeneratorManager = new CodeGeneratorManager();
-            codeGeneratorManager.genCodeWithDetailName(generatorConfig.getTableName());
-        }
+        genServicdAndController();
     }
 
     private String getMappingXMLFilePath(GeneratorConfig generatorConfig) {
@@ -285,6 +276,20 @@ public class MybatisGeneratorBridge {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * 生成service与controller类
+     */
+    private void genServicdAndController(){
+        if (StringUtils.isNotBlank(generatorConfig.getServicePackage())
+                && StringUtils.isNotBlank(generatorConfig.getControllerPackage())
+                && StringUtils.isNotBlank(generatorConfig.getControllerProject())
+                && StringUtils.isNotBlank(generatorConfig.getServiceProject())) {
+            //生成service与controller
+            CodeGeneratorManager codeGeneratorManager = new CodeGeneratorManager(generatorConfig);
+            codeGeneratorManager.genCodeWithDetailName(generatorConfig.getTableName());
+        }
     }
 
     public void setProgressCallback(ProgressCallback progressCallback) {

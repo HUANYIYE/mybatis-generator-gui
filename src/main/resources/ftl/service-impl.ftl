@@ -1,20 +1,23 @@
 package ${basePackage}.service.impl.${sign};
 
-import ${basePackage}.dao.mapper.${sign}.${modelNameUpperCamel}Mapper;
-import ${basePackage}.bean.${sign}.${modelNameUpperCamel};
+import ${basePackage}.dao.${modelNameUpperCamel}Mapper;
+import ${basePackage}.bean.${modelNameUpperCamel};
+import ${basePackage}.bean.${modelNameUpperCamel}Example;
 import ${basePackage}.service.${sign}.${modelNameUpperCamel}Service;
 import ${basePackage}.service.impl.BaseServiceImpl;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
+import javax.annotation.Resource;
 
 /**
  *
  * Created by ${author} on ${date}.
  */
 @Service
-public class ${modelNameUpperCamel}ServiceImpl extends BaseServiceImpl<${modelNameUpperCamel}> implements ${modelNameUpperCamel}Service {
+@Slf4j
+public class ${modelNameUpperCamel}ServiceImpl extends BaseServiceImpl<${modelNameUpperCamel},Integer,${modelNameUpperCamel}Example> implements ${modelNameUpperCamel}Service {
 
-    @Autowired
+    @Resource
     private ${modelNameUpperCamel}Mapper ${modelNameLowerCamel}Mapper;
 
 }

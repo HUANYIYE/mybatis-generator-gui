@@ -1,6 +1,7 @@
 package com.zzg.mybatis.generator.plugins;
 
 import com.google.common.base.CaseFormat;
+import com.zzg.mybatis.generator.model.GeneratorConfig;
 import com.zzg.mybatis.generator.util.CodeGenerator;
 import com.zzg.mybatis.generator.util.CodeGeneratorManager;
 import com.zzg.mybatis.generator.util.StringUtils;
@@ -16,6 +17,13 @@ import java.util.Map;
  * Created by zhh on 2017/09/20.
  */
 public class ControllerGenerator extends CodeGeneratorManager implements CodeGenerator {
+
+    public ControllerGenerator() {
+    }
+
+    public ControllerGenerator(GeneratorConfig generatorConfig) {
+        super(generatorConfig);
+    }
 
     @Override
     public void genCode(String tableName, String modelName, String sign) {
@@ -55,6 +63,7 @@ public class ControllerGenerator extends CodeGeneratorManager implements CodeGen
         data.put("modelNameUpperCamel", modelNameUpperCamel);
         data.put("modelNameLowerCamel", CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, modelNameUpperCamel));
         data.put("basePackage", CONTROLLER_BASE_PACKAGE);
+        data.put("servicePackage",SERVICE_BASE_PACKAGE);
 
         return data;
     }

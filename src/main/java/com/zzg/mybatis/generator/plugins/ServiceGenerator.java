@@ -1,5 +1,6 @@
 package com.zzg.mybatis.generator.plugins;
 
+import com.zzg.mybatis.generator.model.GeneratorConfig;
 import com.zzg.mybatis.generator.util.CodeGenerator;
 import com.zzg.mybatis.generator.util.CodeGeneratorManager;
 import com.zzg.mybatis.generator.util.StringUtils;
@@ -15,6 +16,13 @@ import java.util.Map;
  * Created by zhh on 2017/09/20.
  */
 public class ServiceGenerator extends CodeGeneratorManager implements CodeGenerator {
+
+    public ServiceGenerator() {
+    }
+
+    public ServiceGenerator(GeneratorConfig generatorConfig) {
+        super(generatorConfig);
+    }
 
     @Override
     public void genCode(String tableName, String modelName, String sign) {

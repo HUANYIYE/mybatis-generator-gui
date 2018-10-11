@@ -181,8 +181,7 @@ public class CodeGeneratorManager extends CodeGeneratorConfig {
      * @param flag      标志
      */
     private void genCodeByTableName(String tableName, String modelName, boolean flag) {
-//        String sign = getSign(tableName);
-        String sign = "test";
+        String sign = getSign(tableName);
         if (flag) {
             modelName = getDefModelName(tableName);
         }
@@ -224,7 +223,7 @@ public class CodeGeneratorManager extends CodeGeneratorConfig {
     /**
      * 初始化配置信息
      */
-    public static void init(GeneratorConfig generatorConfig) {
+    public void init(GeneratorConfig generatorConfig) {
         Properties prop = loadProperties();
 
 
@@ -275,4 +274,10 @@ public class CodeGeneratorManager extends CodeGeneratorConfig {
         System.out.println(getBasePackcge("com.xcar.ad.push.service"));
     }
 
+    public CodeGeneratorManager(GeneratorConfig generatorConfig) {
+        init(generatorConfig);
+    }
+
+    public CodeGeneratorManager() {
+    }
 }
