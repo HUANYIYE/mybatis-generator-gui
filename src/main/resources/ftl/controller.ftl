@@ -7,7 +7,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.xcar.ad.push.common.util.JsonUtils;
 
@@ -25,35 +24,30 @@ public class ${modelNameUpperCamel}Controller {
     ${modelNameUpperCamel}Service ${modelNameLowerCamel}Service;
 
     @RequestMapping("/add")
-    @ResponseBody
     public String add(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
         return JsonUtils.encode(true);
     }
 
     @RequestMapping("/delete")
-    @ResponseBody
-    public String delete(@RequestParam Integer id) {
+    public String delete(@RequestParam Long id) {
 	    ${modelNameLowerCamel}Service.deleteById(id);
 	    return JsonUtils.encode(true);
     }
 
     @RequestMapping("/update")
-    @ResponseBody
     public String update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
 	    ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
 	    return JsonUtils.encode(true);
     }
 
     @RequestMapping("/detail")
-    @ResponseBody
-    public String detail(@RequestParam Integer id) {
+    public String detail(@RequestParam Long id) {
         ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
         return JsonUtils.encode(${modelNameLowerCamel});
     }
 
     @RequestMapping("/list")
-    @ResponseBody
     public String list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} ${modelNameLowerCamel}) {
         PageHelper.startPage(page, size);
         ${modelNameUpperCamel}Example ${modelNameLowerCamel}Example = new ${modelNameUpperCamel}Example();
