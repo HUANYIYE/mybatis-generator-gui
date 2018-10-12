@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import lombok.extern.slf4j.Slf4j;
 import com.xcar.ad.push.common.util.JsonUtils;
 
 
@@ -20,7 +19,6 @@ import java.util.List;
  * Created by ${author} on ${date}.
  */
 @RestController
-@Slf4j
 public class ${modelNameUpperCamel}Controller {
 
     @Autowired
@@ -58,8 +56,8 @@ public class ${modelNameUpperCamel}Controller {
     @ResponseBody
     public String list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} ${modelNameLowerCamel}) {
         PageHelper.startPage(page, size);
-        ${modelNameUpperCamel}Example example = new ${modelNameUpperCamel}Example();
-        List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll(example);
+        ${modelNameUpperCamel}Example ${modelNameLowerCamel}Example = new ${modelNameUpperCamel}Example();
+        List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll(${modelNameLowerCamel}Example);
         PageInfo pageInfo = new PageInfo(list);
         return JsonUtils.encode(pageInfo);
     }
