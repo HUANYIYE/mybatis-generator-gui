@@ -17,7 +17,6 @@ import javax.annotation.Resource;
 @Slf4j
 public class ${modelNameUpperCamel}ServiceImpl extends BaseServiceImpl<${modelNameUpperCamel},Long,${modelNameUpperCamel}Example> implements ${modelNameUpperCamel}Service {
 
-    @Resource
     private ${modelNameUpperCamel}Mapper ${modelNameLowerCamel}Mapper;
 
     @Resource
