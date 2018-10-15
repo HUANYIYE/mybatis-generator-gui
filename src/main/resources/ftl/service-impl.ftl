@@ -20,4 +20,10 @@ public class ${modelNameUpperCamel}ServiceImpl extends BaseServiceImpl<${modelNa
     @Resource
     private ${modelNameUpperCamel}Mapper ${modelNameLowerCamel}Mapper;
 
+    @Resource
+    public void set${modelNameUpperCamel}Mapper(${modelNameUpperCamel}Mapper ${modelNameLowerCamel}Mapper) {
+        super.setBaseMapper(${modelNameLowerCamel}Mapper);
+        this.${modelNameLowerCamel}Mapper = ${modelNameLowerCamel}Mapper;
+    }
+
 }
