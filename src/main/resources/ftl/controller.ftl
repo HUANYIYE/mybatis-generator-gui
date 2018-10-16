@@ -1,6 +1,6 @@
-package ${basePackage}.controller.${sign};
+package ${basePackage}.controller;
 import ${servicePackage}.bean.${modelNameUpperCamel};
-import ${servicePackage}.service.${sign}.${modelNameUpperCamel}Service;
+import ${servicePackage}.service.${modelNameUpperCamel}Service;
 import ${servicePackage}.bean.${modelNameUpperCamel}Example;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

@@ -27,7 +27,7 @@ public class ServiceGenerator extends CodeGeneratorManager implements CodeGenera
     @Override
     public void genCode(String tableName, String modelName, String sign) {
         Configuration cfg = getFreemarkerConfiguration();
-        String customMapping = "/" + sign + "/";
+        String customMapping = "/" ;
         String modelNameUpperCamel = StringUtils.isNullOrEmpty(modelName) ? tableNameConvertUpperCamel(tableName) : modelName;
 
         Map<String, Object> data = getDataMapInit(modelName, sign, modelNameUpperCamel);

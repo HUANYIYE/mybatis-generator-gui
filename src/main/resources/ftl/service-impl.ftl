@@ -1,10 +1,9 @@
-package ${basePackage}.service.impl.${sign};
+package ${basePackage}.service.impl;
 
 import ${basePackage}.dao.${modelNameUpperCamel}Mapper;
 import ${basePackage}.bean.${modelNameUpperCamel};
 import ${basePackage}.bean.${modelNameUpperCamel}Example;
-import ${basePackage}.service.${sign}.${modelNameUpperCamel}Service;
-import ${basePackage}.service.impl.BaseServiceImpl;
+import ${basePackage}.service.${modelNameUpperCamel}Service;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import javax.annotation.Resource;
