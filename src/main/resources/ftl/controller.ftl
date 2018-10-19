@@ -60,9 +60,9 @@ public class ${modelNameUpperCamel}Controller {
     @ApiOperation(value = "list", notes = "分页查询")
     @ApiImplicitParams({ @ApiImplicitParam(name = "page", value = "页数", paramType = "Integer"),
                          @ApiImplicitParam(name = "size", value = "每页数量", paramType = "Integer"),
-                         @ApiImplicitParam(name = "${modelNameLowerCamel}", value = "查询条件", paramType = "${modelNameUpperCamel}") })
+                         @ApiImplicitParam(name = "example", value = "查询条件", paramType = "${modelNameUpperCamel}") })
     @GetMapping("/list")
-    public String list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} ${modelNameLowerCamel}) {
+    public String list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} example) {
         PageHelper.startPage(page, size);
         ${modelNameUpperCamel}Example ${modelNameLowerCamel}Example = new ${modelNameUpperCamel}Example();
         List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll(${modelNameLowerCamel}Example);
