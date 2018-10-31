@@ -6,6 +6,6 @@ import ${basePackage}.bean.${modelNameUpperCamel}Example;
  *
  * Created by ${author} on ${date}.
  */
-public interface ${modelNameUpperCamel}Service extends BaseService<${modelNameUpperCamel},Long,${modelNameUpperCamel}Example> {
+public interface ${modelNameUpperCamel}Service extends BaseService<${modelNameUpperCamel},Integer,${modelNameUpperCamel}Example> {
 
 }

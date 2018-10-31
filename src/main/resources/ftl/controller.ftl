@@ -33,9 +33,9 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @ApiOperation(value = "delete", notes = "删除")
-    @ApiImplicitParam(name = "id", value = "id", paramType = "Long")
+    @ApiImplicitParam(name = "id", value = "id", paramType = "Integer")
     @DeleteMapping("/delete")
-    public String delete(@RequestParam Long id) {
+    public String delete(@RequestParam Integer id) {
 	    ${modelNameLowerCamel}Service.deleteById(id);
 	    return JsonUtils.encode(true);
     }
@@ -49,9 +49,9 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @ApiOperation(value = "get", notes = "根据ID查询")
-    @ApiImplicitParam(name = "id", value = "id", paramType = "Long")
+    @ApiImplicitParam(name = "id", value = "id", paramType = "Integer")
     @GetMapping("/get")
-    public String get(@RequestParam Long id) {
+    public String get(@RequestParam Integer id) {
         ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
         return JsonUtils.encode(${modelNameLowerCamel});
     }
