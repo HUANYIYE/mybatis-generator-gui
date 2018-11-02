@@ -81,7 +81,7 @@ public class ${modelNameUpperCamel}Controller {
             resultVo = ResultVoUtil.success(${modelNameLowerCamel});
         } catch (Exception e) {
             log.error("查询异常：get id={}{}", id, e.getStackTrace());
-            resultVo = ResultVoUtil.fail(ResponseEnum.SYSTEM_ERROR);
+            resultVo = ResultVoUtil.fail(ResponseEnum.SELECT_ERROR);
         }
         return JsonUtils.encode(resultVo);
     }
