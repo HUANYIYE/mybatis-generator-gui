@@ -5,6 +5,7 @@ import ${servicePackage}.bean.${modelNameUpperCamel}Example;
 import com.github.pagehelper.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import com.xcar.ad.push.enums.ResponseEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xcar.ad.push.common.util.JsonUtils;
 import io.swagger.annotations.*;
@@ -62,7 +63,7 @@ public class ${modelNameUpperCamel}Controller {
     public String update(${modelNameUpperCamel} param) {
         ResultVo resultVo = null;
         try {
-	        ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
+	        ${modelNameLowerCamel}Service.update(param);
             resultVo = ResultVoUtil.success();
 	     } catch (Exception e) {
             log.error("修改异常：update{}{}",param.toString() , e.getStackTrace());
