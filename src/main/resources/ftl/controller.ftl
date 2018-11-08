@@ -30,7 +30,7 @@ public class ${modelNameUpperCamel}Controller {
     @ApiOperation(value = "add", notes = "添加")
     @ApiImplicitParam(name = "param", value = "${modelNameUpperCamel}参数", paramType = "${modelNameUpperCamel}")
     @PostMapping("/add")
-    public String add(${modelNameUpperCamel} param) {
+    public ResultVo add(${modelNameUpperCamel} param) {
         ResultVo resultVo = null;
         try {
             ${modelNameLowerCamel}Service.save(param);
@@ -39,13 +39,13 @@ public class ${modelNameUpperCamel}Controller {
             log.error("添加异常：add{}{}", param.toString(), e.getStackTrace());
             resultVo = ResultVoUtil.fail(ResponseEnum.ADD_ERROR);
         }
-        return JsonUtils.encode(resultVo);
+        return resultVo;
     }
 
     @ApiOperation(value = "delete", notes = "删除")
     @ApiImplicitParam(name = "id", value = "id", paramType = "Integer")
-    @DeleteMapping("/delete")
-    public String delete(@RequestParam Integer id) {
+    @PostMapping("/delete")
+    public ResultVo delete(@RequestParam Integer id) {
         ResultVo resultVo = null;
         try {
 	        ${modelNameLowerCamel}Service.deleteById(id);
@@ -54,13 +54,13 @@ public class ${modelNameUpperCamel}Controller {
             log.error("删除异常：delete{}{}",id , e.getStackTrace());
             resultVo = ResultVoUtil.fail(ResponseEnum.DELETE_ERROR);
         }
-	    return JsonUtils.encode(resultVo);
+	    return resultVo;
     }
 
     @ApiOperation(value = "update", notes = "修改")
     @ApiImplicitParam(name = "param", value = "${modelNameUpperCamel}参数", paramType = "${modelNameUpperCamel}")
-    @PutMapping("/update")
-    public String update(${modelNameUpperCamel} param) {
+    @PostMapping("/update")
+    public ResultVo update(${modelNameUpperCamel} param) {
         ResultVo resultVo = null;
         try {
 	        ${modelNameLowerCamel}Service.update(param);
@@ -69,13 +69,13 @@ public class ${modelNameUpperCamel}Controller {
             log.error("修改异常：update{}{}",param.toString() , e.getStackTrace());
             resultVo = ResultVoUtil.fail(ResponseEnum.UPDATE_ERROR);
         }
-	    return JsonUtils.encode(resultVo);
+	    return resultVo;
     }
 
     @ApiOperation(value = "get", notes = "根据ID查询")
     @ApiImplicitParam(name = "id", value = "id", paramType = "Integer")
     @GetMapping("/get")
-    public String get(@RequestParam Integer id) {
+    public ResultVo get(@RequestParam Integer id) {
         ResultVo resultVo = null;
         try {
             ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
@@ -84,7 +84,7 @@ public class ${modelNameUpperCamel}Controller {
             log.error("查询异常：get id={}{}", id, e.getStackTrace());
             resultVo = ResultVoUtil.fail(ResponseEnum.SELECT_ERROR);
         }
-        return JsonUtils.encode(resultVo);
+        return resultVo;
     }
 
 
@@ -93,7 +93,7 @@ public class ${modelNameUpperCamel}Controller {
                          @ApiImplicitParam(name = "size", value = "每页数量", paramType = "Integer"),
                          @ApiImplicitParam(name = "param", value = "查询条件", paramType = "${modelNameUpperCamel}") })
     @GetMapping("/list")
-    public String list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} param) {
+    public ResultVo list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} param) {
         ResultVo resultVo = null;
         PageHelper.startPage(page, size);
         try {
@@ -105,6 +105,6 @@ public class ${modelNameUpperCamel}Controller {
             log.error("查询异常：list{}{}", param.toString(), e.getStackTrace());
             resultVo = ResultVoUtil.fail(ResponseEnum.SELECT_ERROR);
         }
-        return JsonUtils.encode(resultVo);
+        return resultVo;
     }
 }
