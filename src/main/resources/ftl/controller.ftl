@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.xcar.ad.push.common.util.JsonUtils;
 import io.swagger.annotations.*;
 import com.xcar.ad.push.util.ResultVoUtil;
+import com.xcar.ad.push.model.form.PageQueryForm;
 import com.xcar.ad.push.model.vo.ResultVo;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class ${modelNameUpperCamel}Controller {
             ${modelNameLowerCamel}Service.save(param);
             resultVo = ResultVoUtil.success();
         } catch (Exception e) {
-            log.error("添加异常：add{}{}", param.toString(), e.getStackTrace());
+            log.error("添加异常：add{}{}", param.toString(), e);
             resultVo = ResultVoUtil.fail(ResponseEnum.ADD_ERROR);
         }
         return resultVo;
@@ -51,7 +52,7 @@ public class ${modelNameUpperCamel}Controller {
 	        ${modelNameLowerCamel}Service.deleteById(id);
             resultVo = ResultVoUtil.success();
         } catch (Exception e) {
-            log.error("删除异常：delete{}{}",id , e.getStackTrace());
+            log.error("删除异常：delete{}{}",id , e);
             resultVo = ResultVoUtil.fail(ResponseEnum.DELETE_ERROR);
         }
 	    return resultVo;
@@ -66,7 +67,7 @@ public class ${modelNameUpperCamel}Controller {
 	        ${modelNameLowerCamel}Service.update(param);
             resultVo = ResultVoUtil.success();
 	     } catch (Exception e) {
-            log.error("修改异常：update{}{}",param.toString() , e.getStackTrace());
+            log.error("修改异常：update{}{}",param.toString() , e);
             resultVo = ResultVoUtil.fail(ResponseEnum.UPDATE_ERROR);
         }
 	    return resultVo;
@@ -81,7 +82,7 @@ public class ${modelNameUpperCamel}Controller {
             ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
             resultVo = ResultVoUtil.success(${modelNameLowerCamel});
         } catch (Exception e) {
-            log.error("查询异常：get id={}{}", id, e.getStackTrace());
+            log.error("查询异常：get id={}{}", id, e);
             resultVo = ResultVoUtil.fail(ResponseEnum.SELECT_ERROR);
         }
         return resultVo;
@@ -92,17 +93,18 @@ public class ${modelNameUpperCamel}Controller {
     @ApiImplicitParams({ @ApiImplicitParam(name = "page", value = "页数", paramType = "Integer"),
                          @ApiImplicitParam(name = "size", value = "每页数量", paramType = "Integer"),
                          @ApiImplicitParam(name = "param", value = "查询条件", paramType = "${modelNameUpperCamel}") })
-    @GetMapping("/list")
-    public ResultVo list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size, ${modelNameUpperCamel} param) {
+    @PostMapping("/list")
+    public ResultVo list(@RequestBody PageQueryForm<${modelNameUpperCamel}>  param) {
         ResultVo resultVo = null;
-        PageHelper.startPage(page, size);
+        Page<Object> page = PageHelper.startPage(param.getPageNum(), param.getPageSize());
         try {
             ${modelNameUpperCamel}Example ${modelNameLowerCamel}Example = new ${modelNameUpperCamel}Example();
             List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll(${modelNameLowerCamel}Example);
-            PageInfo pageInfo = new PageInfo(list);
+            PageInfo info = new PageInfo<>(page.getResult());
+            info.setList(list);
             resultVo = ResultVoUtil.success(pageInfo);
         } catch (Exception e) {
-            log.error("查询异常：list{}{}", param.toString(), e.getStackTrace());
+            log.error("查询异常：list{}{}", param.toString(), e);
             resultVo = ResultVoUtil.fail(ResponseEnum.SELECT_ERROR);
         }
         return resultVo;
